@@ -1,0 +1,75 @@
+{% extends './index.html' %}
+{% load widget_tweaks %}
+
+
+{% load static %}
+ 
+{% comment %} {% include sidebar %} {% endcomment %}
+{% block main %}
+ <section class="section">
+    <div class="row">
+       <div class="col-lg-12">
+        
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Add Product</h5>
+
+            <!-- Vertical Form -->
+            <form class="row g-3", method="post">
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Name</label>
+                {% comment %} <input type="text" class="form-control" id="inputNanme4"> {% endcomment %}
+                {% render_field pForm.name class="form-control" placeholder="Name" %}
+                
+              </div>
+              <div class="col-12">
+                <label for="inputEmail4" class="form-label">Charges</label>
+                {% comment %} <input type="email" class="form-control" id="inputEmail4"> {% endcomment %}
+                {% render_field pForm.charges class="form-control" placeholder="Charges" %}
+              </div>
+              <div class="col-12">
+                <label for="inputPassword4" class="form-label">Quantity</label>
+                {% comment %} <input type="password" class="form-control" id="inputPassword4"> {% endcomment %}
+                {% render_field pForm.quantity class="form-control" placeholder="Quantity" %}
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Description</label>
+                {% comment %} <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"> {% endcomment %}
+                {% render_field pForm.description class="form-control" placeholder="Description" %}
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Image</label>
+                {% comment %} <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"> {% endcomment %}
+                {% render_field pForm.images class="form-control" placeholder="Image" %}
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Video</label>
+                {% comment %} <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"> {% endcomment %}
+                {% render_field pForm.video class="form-control" placeholder="Video" %}
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+            </form><!-- Vertical Form -->
+
+          </div>
+        </div>
+
+       
+
+      </div>
+    </div>
+  </section>
+{% endblock main %}
+
+  
+
+    
+
+
+
+
+
+
+

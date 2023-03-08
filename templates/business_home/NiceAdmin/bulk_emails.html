@@ -1,0 +1,34 @@
+{% extends './base.html' %}
+
+
+{% block main %}
+<form enctype="multipart/form-data" method="post">
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+        <label  class="form-label" for="form5Example1">Attatchment</label>
+      <input type="file" id="" name="image" class="form-control" />
+      
+    </div>
+  
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example2">Subject</label>
+        <input name="subject">
+    </div>
+
+    <div class="form-outline mb-4">
+        {% comment %} <label class="form-label" for="form5Example2">Email address</label> {% endcomment %}
+
+        <textarea id="story" name="text"
+                                      rows="5" cols="33">
+                              
+                              </textarea>
+    </div>
+  
+    <!-- Checkbox -->
+    
+  
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+  </form>
+{% endblock main %}

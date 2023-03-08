@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+
+
+{% block main %}
+<form>
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example1">Image</label>
+      <input type="file" id="form5Example1" class="form-control" />
+      
+    </div>
+  
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        {% comment %} <label class="form-label" for="form5Example2">Email address</label> {% endcomment %}
+
+        <textarea id="story" name="response"
+                                      rows="5" cols="33">
+                              
+                              </textarea>
+    </div>
+  
+    <!-- Checkbox -->
+    
+  
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+  </form>
+{% endblock main %}
