@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% extends './base.html' %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>E-Marketplace</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% load static %}
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'styling/customer_home/assets/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'styling/customer_home/assets/css/style.css' %}" rel="stylesheet">
+
+    <style>
+        .rating {
+          display: inline-block;
+          font-size: 0;
+        }
+        
+        .rating input {
+          display: none;
+        }
+        
+        .rating label {
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          margin: 0;
+          padding: 0;
+          background-image: url("https://cdn3.iconfinder.com/data/icons/flat-icons-19/512/Star-512.png");
+          background-size: cover;
+        }
+        
+        .rating input:checked + label {
+          background-image: url("https://cdn3.iconfinder.com/data/icons/flat-icons-19/512/Star-Selected-512.png");
+        }
+        </style>
+</head>
+
+<body>
+   
+
+{% block main %}
+<span class="fa fa-star checked">vvv</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<div class="rating">
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label for="star5" title="5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4" title="4 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3" title="3 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2" title="2 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1" title="1 star"></label>
+  </div>
+<div class="rating">
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label for="star5" title="5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4" title="4 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3" title="3 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2" title="2 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1" title="1 star"></label>
+  </div>
+  
+
+    <div class="container-fluid col-xxl-12 px-4">
+        {% for i in inquiries %}
+            {% if i.is_customer == True %}
+                <p class="text-success"s>{{ i.response }}</p>
+            {% endif %}
+        <p>{{ i.service }}{{ i.response }}</p>
+        {% endfor %}
+    </div>
+    <!-- Products End -->
+
+    {% endblock main %}
+
+
+
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

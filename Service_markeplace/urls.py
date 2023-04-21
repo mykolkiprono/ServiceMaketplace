@@ -30,6 +30,7 @@ urlpatterns = [
     path('change_password/<int:id>', change_password, name='change_password'),
 
     # mpesa
+    path('oauth_success/', oauth_success, name='oauth_success'),
     path('stk_push_success/', stk_push_success, name='stk_push_success'),
     # path('mpesa/', include(mpesa_urls)),
     # index
@@ -52,10 +53,15 @@ urlpatterns = [
     path('products/', products, name='products'),
     path('product_detail/<int:pk>', product_detail, name='product_detail'),
     path('services/', services, name='services'),
+    path('service_discount/', service_discount, name='service_discount'),
+    path('product_discount/', product_discount, name='product_discount'),
     path('service_detail/<int:pk>', service_detail, name='service_detail'),
     path('schedule_service/<int:pk>', schedule_service, name='schedule_service'),
+    path('enquiry_home/', inquire_home, name='inquire_home'),
     path('service_enquire/<int:pk>', service_enquire, name='service_enquire'),
     path('enquiry_response/<int:pk>/', enquiry_response, name='enquiry_response'),
+    path('service_rating/<int:pk>/', service_rating, name='service_rating'),
+    path('product_rating/<int:pk>/', product_rating, name='product_rating'),
     path('checkout/<int:pk>', checkout, name='checkout'),
     path('invoices/', invoices, name='invoices'),
     path('download_invoice/', download_invoice, name='download_invoice'),
@@ -69,6 +75,13 @@ urlpatterns = [
     path('bulk_emails/', bulk_emails, name='bulk_emails'),
     path('posters/', posters, name='posters'),
     path('profile/', profile, name='profile'),
+    path('today_query/', today_query, name='today_query'),
+    path('today_service/', today_service, name='today_service'),
+    path('from_to_query/', from_to_query, name='from_to_query'),
+    path('checked_out/<int:pk>/', sale_status, name='checked_out'),
+    path('from_to_query/', from_to_query, name='from_to_query'),
+    path('from_to_schedule/', from_to_schedule, name='from_to_schedule'),
+    path('sales_data/', sales_data, name='sales_data'),
 
     # reports
     path('reports/', reports, name='reports'),

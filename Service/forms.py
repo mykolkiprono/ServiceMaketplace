@@ -111,6 +111,7 @@ class ServiceForm(forms.ModelForm):
         fields = ["name",'charges','images', 'description', 'video']
 
 class DiscountServiceForm(forms.ModelForm):
+    # service = Service.objects.get()
     
     class Meta:
         model = DiscountService

@@ -147,3 +147,9 @@ class ResponseAdmin(admin.ModelAdmin):
     list_display = ['customer','service', 'response','time']
 
 admin.site.register(Response,ResponseAdmin)
+
+class RateProductAdmin(admin.ModelAdmin):
+    location = RateProduct.objects.all().count()
+    list_display = ['product','rate', 'comment']
+
+admin.site.register(RateProduct,RateProductAdmin)

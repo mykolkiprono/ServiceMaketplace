@@ -292,9 +292,8 @@
 </div>
 
 
-<h3 style="text-align:center;">Your Booked servies <strong>{{request.user}}</strong> !</h3> <br><br>
+<h3 style="text-align:center;">Bought Products <strong>{{request.user}}</strong> !</h3> <br><br>
 <div class="container">
-    {% comment %} <header class="card-header" style="text-align:center;"> My Orders / Tracking </header> {% endcomment %}
 
     {% for s in sales %}
 
@@ -334,30 +333,57 @@
             </ul>
             <hr>
 
-            {% comment %} <div class="track">
-                {%if order.status == 'Pending' %}
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%elif order.status == 'Order Confirmed' %}
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%elif order.status == 'Out for Delivery'%}
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%else%}
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:13px; padding-right:3px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%endif%}
-            </div> {% endcomment %}
+            
+        </div>
+    </article><br>
+    {%endfor%}
 
+    
+</div>
+
+
+<h3 style="text-align:center;">Booked services <strong>{{request.user}}</strong> !</h3> <br><br>
+<div class="container">
+
+    {% for b in bookings %}
+
+    <article class="card">
+        <div class="card-body">
+            <ul class="row" style="margin-left:20px;margin-top:20px;">
+                <li class="col-md-4">
+                  <figure class="itemside mb-3">
+                    
+                      <div class="aside"><img src={{ b.product.image.url }} class="img-sm border"></div>
+                      <figcaption class="info align-self-center">
+
+                          <p class="title"><strong>Name : </strong>{{ b.service.name}} <br> <strong>Quantity : </strong>{{ s.quantity }}</p> <span class="text-muted"><strong>Price : </strong>{{s.total_price}} </span>
+
+                      </figcaption>
+
+                  </figure>
+                </li>
+                <li class="col-md-4">
+                    <div class="col"> <strong>Time:</strong> <br> {{s.service.time}}</div>
+                    
+                        
+                    
+                    <div class="col"> <strong>Shipment shift:</strong> <br> {{ b.service.charges }}</div><br>
+                    {% comment %} <a href="{% url 'cancel_order' order.id%}" class="cancel">cancel order</a> {% endcomment %}
+                    <p>{{ message }}</p>
+               
+                </li>
+                 
+                <li class="col-md-4">
+                    <div class="col"> <strong>Status:</strong> <br> {{order.status}} </div> <br>
+                    {% comment %} <div class="col"> <strong>time taken</strong> <br> <strong style="color: darkolivegreen;">{{ time }} </strong></div><br> {% endcomment %}
+                    <div class="col">  <h5><a class="download" style="text-decoration: none;" href="{% url 'download_invoice' %}" target="_blank">Download Invoice</a></h5></div>
+                    
+                </li>
+               
+            </ul>
+            <hr>
+
+            
         </div>
     </article><br>
     {%endfor%}

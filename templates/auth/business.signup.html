@@ -72,21 +72,21 @@
                       </div>   
                       <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">logo<span class="text-danger"> *</span></label> {% render_field businessForm.logo class="form-control" placeholder="logo" %} </div><br/><br/><br/><br/>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">liscence<span class="text-danger"> *</span></label> {% render_field businessForm.liscences class="form-control" placeholder="liscence" %} </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Photo<span class="text-danger"> *</span></label> {% render_field businessForm.liscences class="form-control" placeholder="liscence" %} </div>
 
                     </div>  
                       <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">photo<span class="text-danger"> *</span></label> {% render_field businessForm.photo class="form-control" placeholder="photo" %} </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">password<span class="text-danger"> *</span></label> {% render_field userForm.password class="form-control" placeholder="password" %} </div><br/><br/><br/><br/>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">password<span class="text-danger"> *</span></label> {% render_field userForm.password type="password" class="form-control" placeholder="password" %} </div><br/><br/><br/><br/>
 
 
                     </div>                
                      
                       <div class="row justify-content-end">
-                        <div class="form-group col-sm-6 mt"> <button type="submit" class="btn-block btn-primary">next</button> </div>
+                        <div class="form-group col-sm-6 mt"> <button type="submit" class="btn-block btn-primary">Submit</button> </div>
 
                           {% comment %} <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">login</button> </div> {% endcomment %}
-                          <input class="col-sm-6" style="height: 45px;"type="submit" value="login">
+                          {% comment %} <input class="col-sm-6" style="height: 45px;"type="submit" value="login"> {% endcomment %}
                       </div> 
                   </form>
                   <a href="{% url 'customersignup' %}" style="text-decoration: none;">register as customer</a>

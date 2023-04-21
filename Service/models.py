@@ -20,6 +20,7 @@ class Customer(models.Model):
 
     def __str__(self):
       return self.user.username
+    
 class Business(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True, related_name="businesses")    
     brand_name = models.CharField(max_length=20,default="none")
@@ -45,6 +46,9 @@ class BusinessLocation(models.Model):
     local_town = models.CharField(max_length=15,default="nchiru")
     google_map = models.URLField(blank=True, null=True)
 
+    def __str__(self):
+       return self.business 
+
 
 class Service(models.Model):
     business = models.ForeignKey("Business",on_delete=models.CASCADE, null=True, related_name="services")
@@ -59,7 +63,7 @@ class Service(models.Model):
 class Product(models.Model):
     business = models.ForeignKey("Business",on_delete=models.CASCADE, null=True, related_name="products")
     name = models.CharField(max_length=200)
-    charges = models.DecimalField(max_digits=6, decimal_places=2)
+    charges = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField()
     images = models.FileField(upload_to="photo/Service", blank=True, null=True)
     video = models.FileField(upload_to="videos", blank=True, null=True)
@@ -69,6 +73,7 @@ class Product(models.Model):
 
 class Sales(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name="sales")
+    customer = models.ForeignKey("Customer", on_delete=models.CASCADE, null=True,blank=True)
     quantity = models.IntegerField()
     total_price = models.CharField(max_length=15)
     time = models.DateTimeField()
@@ -82,6 +87,7 @@ class Sales(models.Model):
         return str(self.product.name)
 
 class ScheduleService(models.Model):
+    customer = models.ForeignKey("Customer", on_delete=models.CASCADE, null=True,blank=True)
     service = models.ForeignKey('Service', on_delete=models.CASCADE)
     time = models.DateTimeField()
 
@@ -121,13 +127,13 @@ class EventLocation(models.Model):
 class DiscountService(models.Model):
     service = models.ForeignKey("Service",on_delete=models.CASCADE, blank=True, null=True)
     discount = models.IntegerField()
-    duration = models.DurationField()
+    duration = models.IntegerField()
 
 class DiscountProduct(models.Model):
-    product = models.ForeignKey("Product",on_delete=models.CASCADE)
+    product = models.ForeignKey("Product",on_delete=models.CASCADE, related_name="pdiscounts")
     discount = models.IntegerField()
     quantity = models.IntegerField()
-    duration = models.DurationField()
+    duration = models.IntegerField()
 
 class StateService(models.Model):
     service = models.ForeignKey("Service",on_delete=models.CASCADE)
@@ -162,7 +168,6 @@ import datetime
 
 class Enquire(models.Model):
     business = models.ForeignKey('Business', on_delete=models.CASCADE, related_name="enquiries")
-    # customer = models.ForeignKey("Service",on_delete=models.CASCADE, default=None, null=True)
     enquiry = models.CharField(max_length=200)
     time = models.DateTimeField(null=True, blank=True, auto_now_add=True)
 
@@ -193,6 +198,7 @@ class Response(models.Model):
     # bussiness = models.ForeignKey("Service",on_delete=models.CASCADE)
     response = models.TextField(max_length=200)
     time = models.DateTimeField()
+    is_customer = models.BooleanField(default=False)
 
     def __str__(self):
        return self.response
@@ -206,15 +212,15 @@ class Feedback(models.Model):
     def __str__(self):
        return self.feed
     
-class EnquiryResponse(models.Model):
-    customer = models.ForeignKey("Customer",on_delete=models.CASCADE)
-    # service = models.ForeignKey("Service",default=None, on_delete=models.CASCADE)
-    # bussiness = models.ForeignKey("Service",on_delete=models.CASCADE)
-    response = models.TextField(max_length=200)
-    time = models.DateTimeField()
+# class EnquiryResponse(models.Model):
+#     customer = models.ForeignKey("Customer",on_delete=models.CASCADE)
+#     # service = models.ForeignKey("Service",default=None, on_delete=models.CASCADE)
+#     # bussiness = models.ForeignKey("Service",on_delete=models.CASCADE)
+#     response = models.TextField(max_length=200)
+#     time = models.DateTimeField()
 
-    def __str__(self):
-       return self.response
+#     def __str__(self):
+#        return self.response
 
 class RateService(models.Model):
     service = models.ForeignKey("Service",on_delete=models.CASCADE)
@@ -223,6 +229,15 @@ class RateService(models.Model):
 
     def __str__(self):
        return self.comment
+
+class RateProduct(models.Model):
+    product = models.ForeignKey("Product",on_delete=models.CASCADE)
+    rate = models.PositiveIntegerField()
+    comment = models.TextField(max_length=200)
+
+    def __str__(self):
+       return self.comment
+
 
 class RateBusiness(models.Model):
     business = models.ForeignKey("Business",on_delete=models.CASCADE)
@@ -237,6 +252,7 @@ class ReferService(models.Model):
     refered = models.ForeignKey("Customer",on_delete=models.CASCADE)
     service = models.ForeignKey("Service",on_delete=models.CASCADE)
     message = models.TextField(max_length=50,default="none")
+
 
 class Testimony(models.Model):
     customer = models.ForeignKey("Customer",on_delete=models.CASCADE)

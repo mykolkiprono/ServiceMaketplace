@@ -21,7 +21,7 @@
     <div class="container-fluid px-1 py-5 mx-auto">
       <div class="row d-flex justify-content-center">
           <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-              <h3>What do you deal in.</h3>
+              <h3>What products/services do you sell.</h3>
               
               <div class="card">
                   <form class="form-card" method="post">
@@ -32,19 +32,19 @@
                           {% if dealingsForm.username.errors %}
                          <br/> <center><p class="errors">{{ dealingsForm.username.errors }}</p>
                               {% endif %}</center>
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">dealings<span class="text-danger"> *</span></label> {% render_field dealingsForm.dealings  class="form-control" placeholder="phone number"  %} </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">dealings description<span class="text-danger"> *</span></label> {% render_field dealingsForm.dealings  class="form-control" placeholder="Description"  %} </div>
             
                       </div>
                      
                       <div class="row justify-content-end">
-                          <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">login</button> </div>
+                          <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">next</button> </div>
                           {% comment %} <a class="btn btn-info pull-right"  href="{% url 'business.location' %}"> {% endcomment %}
     
-                          <input class="col-sm-6" style="height: 45px;"type="submit" value="login">
+                          {% comment %} <input class="col-sm-6" style="height: 45px;"type="submit" value="login"> {% endcomment %}
                       </div> 
                   </form>
 
-                  <a href="{% url 'business.signup' %}">register business</a>
+                  {% comment %} <a href="{% url 'business.signup' %}">register business</a> {% endcomment %}
               </div>
           </div>
       </div>
