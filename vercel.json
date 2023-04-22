@@ -1,0 +1,14 @@
+{
+        "builds": [
+          {
+            "src": "Service_marketplace/wsgi.py",
+            "use": "@vercel/python"
+          }
+        ],
+        "routes": [
+          {
+            "src": "/(.*)",
+            "dest": "Service_marketplace/wsgi.py"
+          }
+        ]
+    }
