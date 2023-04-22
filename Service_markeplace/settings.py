@@ -75,6 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Service_markeplace.wsgi.application'
+# WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 
 # Database
